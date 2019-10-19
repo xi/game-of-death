@@ -3,6 +3,6 @@ module.exports = {
     PLAYERONE: 1,
     PLAYERTWO: 2,
 
-    hight: 100,
-    width: 100,
+    hight: 60,
+    width: 40,
 }
