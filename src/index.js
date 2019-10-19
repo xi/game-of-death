@@ -1,0 +1,1 @@
+var preact = require('preact');
