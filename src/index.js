@@ -27,7 +27,7 @@ var on = function(eventType, selector, fn) {
     document.addEventListener(eventType, function(event) {
         var target = event.target.closest(selector);
         if (target) {
-            fn.call(target, event);
+            fn.call(target, state, event);
             update();
         }
     });
@@ -45,7 +45,7 @@ var play = function() {
     setTimeout(play, constants.playTimeout);
 };
 
-on('click', '.board-cell', function(event) {
+on('click', '.board-cell', function(state) {
     if (state.playing || state.steps) {
         return;
     }
@@ -56,7 +56,7 @@ on('click', '.board-cell', function(event) {
     state.board[y][x] = state.currentPlayer;
 });
 
-on('click', '.js-next-gen', function(event) {
+on('click', '.js-next-gen', function(state) {
     if (state.playing || state.steps) {
         return;
     }
@@ -64,12 +64,12 @@ on('click', '.js-next-gen', function(event) {
     play();
 });
 
-on('click', '.js-play', function(event) {
+on('click', '.js-play', function(state) {
     state.playing = !state.playing;
     play();
 });
 
-on('click', '.js-current-player', function(event) {
+on('click', '.js-current-player', function(state) {
     state.currentPlayer = (state.currentPlayer + 1) % constants.playerCount;
     if (state.currentPlayer === 0) {
         state.currentPlayer = 1;
