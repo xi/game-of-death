@@ -8,6 +8,8 @@ var state, tree;
 var init = function(wrapper) {
     state = {
         board: logic.setupBoard(),
+        playing: false,
+        steps: 0,
     };
     tree = template(state);
     var element = vdom.mount(tree);
@@ -31,8 +33,11 @@ var on = function(eventType, selector, fn) {
 };
 
 var play = function() {
-    if (!state.playing) {
+    if (!state.playing && !state.steps) {
         return;
+    }
+    if (!state.playing) {
+        state.steps -= 1;
     }
     logic.calculateNextGen(state);
     update();
@@ -40,7 +45,7 @@ var play = function() {
 };
 
 on('click', '.board-cell', function(event) {
-    if (state.playing) {
+    if (state.playing || state.steps) {
         return;
     }
     var row = this.parentElement;
@@ -51,10 +56,11 @@ on('click', '.board-cell', function(event) {
 });
 
 on('click', '.js-next-gen', function(event) {
-    if (state.playing) {
+    if (state.playing || state.steps) {
         return;
     }
-    logic.calculateNextGen(state);
+    state.steps = document.querySelector('[name="steps"]').value;
+    play();
 });
 
 on('click', '.js-play', function(event) {
