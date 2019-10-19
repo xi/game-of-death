@@ -53,7 +53,11 @@ on('mousedown', '.board-cell', function(state) {
     var board = row.parentElement;
     var x = Array.prototype.indexOf.call(row.children, this);
     var y = Array.prototype.indexOf.call(board.children, row);
-    state.board[y][x] = state.currentPlayer;
+    if (state.board[y][x] === state.currentPlayer) {
+        state.board[y][x] = constants.EMPTY;
+    } else {
+        state.board[y][x] = state.currentPlayer;
+    }
 });
 
 on('click', '.js-next-gen', function(state) {
