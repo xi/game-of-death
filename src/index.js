@@ -15,7 +15,7 @@ var init = function(wrapper) {
     tree = template(state);
     var element = vdom.mount(tree);
     wrapper.append(element);
-}
+};
 
 var update = function() {
     newTree = template(state);
