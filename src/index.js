@@ -21,7 +21,6 @@ _.on('click', '.board-cell', function(event) {
 });
 
 _.on('click', '.js-next-gen', function(event) {
-    console.log('foo');
     logic.calculateNextGen(state);
     preact.render(template(state), wrapper);
 });
