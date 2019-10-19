@@ -35,6 +35,7 @@ var calculateNextGen = function (state){
     for(var x = 0; x< constants.width; x++){
         for(var y = 0; y<constants.height; y++){
             var empty = true;
+            board[x][y] = constants.EMPTY;
             for(var p = 1; p< constants.playerCount; p++){
                 if(calcBoard[p][x][y] == p){
                     if(empty == false){
