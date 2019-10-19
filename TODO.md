@@ -8,7 +8,7 @@
 +  delay duration modes: fast, med, slow...
 
 ## II. Logic
-+ undestructible environment (no evolution, no destruction) "Gaia"
++ ~~undestructible environment (no evolution, no destruction) "Gaia"~~
 + Szenario objects (loadable)
     + titel
     + img link (preview)
