@@ -1,7 +1,4 @@
 var constants = require('./constants.js');
-var example = function(a, b) {
-    //content
-};
 
 var setupBoard = function(){
     var board = [];
@@ -66,7 +63,6 @@ var getFriendlyNeighboars = function(board, x, y, p){
 }
 
 module.exports = {
-    example: example,
     setupBoard: setupBoard,
     calculateNextGen: calculateNextGen,
 }
