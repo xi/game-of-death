@@ -4,7 +4,7 @@
   "description": "Confrontative game of live",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx browserify src/index.js -o index.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,5 @@
   "dependencies": {
     "browserify": "^16.5.0",
     "preact": "^10.0.1"
-  },
-  "scripts": {
-    "build": "npx browserify src/index.js -o index.js"
   }
 }
