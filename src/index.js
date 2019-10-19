@@ -11,6 +11,7 @@ const init = function(wrapper) {
         playing: false,
         steps: 0,
         currentPlayer: 1,
+        sandbox: true,
     };
     tree = template(state);
     const element = vdom.mount(tree);
