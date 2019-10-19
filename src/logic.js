@@ -16,14 +16,14 @@ var calculateNextGen = function (state){
     calcBoard = [];
 
     //Calculate every player seperatly
-    for(var p = 1; p< constants.playerCount; p++){
+    for(var p = 1; p < constants.playerCount; p++){
         calcBoard[p] = [];
-        for(var x = 0; x< constants.width; x++){
+        for(var x = 0; x < constants.width; x++){
             calcBoard[p][x] = [];
-            for(var y = 0; y<constants.height; y++){
+            for(var y = 0; y <constants.height; y++){
                 var friendlyNeighboars = getFriendlyNeighboars(board, x, y, p);
                 // Rules are here!
-                if((board[x][y] == p && friendlyNeighboars > 1 && friendlyNeighboars < 4)||
+                if((board[x][y] == p && friendlyNeighboars > 1 && friendlyNeighboars < 4) ||
                    (board[x][y] != p && friendlyNeighboars == 3)
                     ) calcBoard[p][x][y] = p;
                 else calcBoard[p][x][y] = constants.EMPTY;
@@ -32,11 +32,11 @@ var calculateNextGen = function (state){
     }
 
     //Conflate all playerevolutions by clearing tiles that would be claimed by multiple players
-    for(var x = 0; x< constants.width; x++){
+    for(var x = 0; x < constants.width; x++){
         for(var y = 0; y<constants.height; y++){
             var empty = true;
             board[x][y] = constants.EMPTY;
-            for(var p = 1; p< constants.playerCount; p++){
+            for(var p = 1; p < constants.playerCount; p++){
                 if(calcBoard[p][x][y] == p){
                     if(empty == false){
                         board[x][y] = constants.EMPTY;
@@ -50,7 +50,6 @@ var calculateNextGen = function (state){
             }
         }
     }
-
 }
 
 var getFriendlyNeighboars = function(board, x, y, p){
