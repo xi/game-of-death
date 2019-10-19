@@ -24,8 +24,8 @@ const calculateNextGen = function(state) {
                 const friendlyNeighboars = getFriendlyNeighboars(board, x, y, p);
                 // Rules are here!
                 if (
-                    (board[y][x] === p && friendlyNeighboars > 1 && friendlyNeighboars < 4) ||
-                    (board[y][x] !== p && friendlyNeighboars === 3)
+                    (board[y][x] === p && constants.alive.includes(friendlyNeighboars)) ||
+                    (board[y][x] !== p && constants.born.includes(friendlyNeighboars))
                 ) {
                     calcBoard[p][y][x] = p;
                 } else {
