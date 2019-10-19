@@ -1,15 +1,15 @@
-var h = require('preact').h;
+var h = require('petit-dom/dist/petit-dom.min').h;
 
 var renderBoard = function(state) {
     return h(
         'div',
-        {className: 'board'},
+        {'class': 'board'},
         state.board.map(row => h(
             'div',
-            {className: 'board-row'},
+            {'class': 'board-row'},
             row.map(player => h(
                 'div',
-                {className: 'board-cell player-' + player}
+                {'class': 'board-cell player-' + player}
             ))
         ))
     );
@@ -17,7 +17,7 @@ var renderBoard = function(state) {
 
 module.exports = function(state) {
     return h('div', {}, [
-        h('button', {className: 'js-next-gen'}, 'Next Gen'),
+        h('button', {'class': 'js-next-gen'}, 'Next Gen'),
         renderBoard(state),
     ]);
 };
