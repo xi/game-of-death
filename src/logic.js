@@ -56,7 +56,7 @@ var getFriendlyNeighboars = function(board, x, y, p){
     var count = 0;
     for(var deltaX = -1; deltaX <= 1; deltaX++){
         for(var deltaY = -1; deltaY <= 1; deltaY++){
-            if(deltaY+y <0 || deltaY+y > constants.height || deltaX+x <0 || deltaX+x > constants.width) continue;
+            if(deltaY+y <0 || deltaY+y >= constants.height || deltaX+x <0 || deltaX+x >= constants.width) continue;
             if((deltaX != 0 || deltaY != 0) && board[x + deltaX][y + deltaY] == p) count ++;
         }
     }
