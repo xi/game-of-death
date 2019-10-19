@@ -15,12 +15,18 @@ var renderBoard = function(state) {
     );
 };
 
-module.exports = function(state) {
-    return h('div', {}, [
+var renderControls = function(state) {
+    return h('div', {'class': 'board-controls'}, [
         h('input', {type: 'number', value: 1, name: 'steps'}),
         h('button', {'class': 'js-next-gen'}, 'Next Gen'),
         h('button', {'class': 'js-play'}, state.playing ? 'Pause' : 'Play'),
         h('button', {'class': 'js-current-player fg-' + state.currentPlayer}, 'Current Player'),
+    ]);
+};
+
+module.exports = function(state) {
+    return h('div', {}, [
+        renderControls(state),
         renderBoard(state),
     ]);
 };

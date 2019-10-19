@@ -1,3 +1,9 @@
+body {
+    max-width: 50em;
+    margin: 0 auto;
+    padding: 0.5em;
+}
+
 .board-row {
     display: flex;
 }
@@ -12,6 +18,10 @@
 }
 .board-row:not(:last-child) .board-cell {
     border-bottom: 0;
+}
+
+.board-controls {
+    margin-bottom: 1em;
 }
 
 .fg-1 {color: #e41a1c}
