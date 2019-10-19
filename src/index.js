@@ -42,7 +42,9 @@ const play = function() {
     }
     logic.calculateNextGen(state);
     update();
-    setTimeout(play, constants.playTimeout);
+    const speed = document.querySelector('[name="speed"]').value;
+    const timeout = 2000 * Math.pow(0.95, speed);
+    setTimeout(play, timeout);
 };
 
 on('mousedown', '.board-cell', function(state) {

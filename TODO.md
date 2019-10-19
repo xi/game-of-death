@@ -5,7 +5,6 @@
 +  menu
 +  styling
 +  better drawing
-+  delay duration modes: fast, med, slow...
 
 ## II. Logic
 + ~~undestructible environment (no evolution, no destruction) "Gaia"~~
