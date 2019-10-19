@@ -39,3 +39,7 @@
         + n islands
         + players can only build on islands a) they own at least 1 tile on b) they own the majority of tiles on c) they were the last to touch the centertile of
         + every player starts out owning a stabil structure on exactly 1 island
+
+## IV. Hosting
++ where?
++ continuous deployment
