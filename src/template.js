@@ -1,6 +1,6 @@
 var h = require('preact').h;
 
-module.exports = function(state) {
+var renderBoard = function(state) {
     return h(
         'div',
         {className: 'board'},
@@ -13,4 +13,11 @@ module.exports = function(state) {
             ))
         ))
     );
+};
+
+module.exports = function(state) {
+    return h('div', {}, [
+        h('button', {className: 'js-next-gen'}, 'Next Gen'),
+        renderBoard(state),
+    ]);
 };
