@@ -3,7 +3,7 @@ var example = function(a, b) {
     //content
 };
 
-var setupboard = function(){
+var setupBoard = function(){
     var board = [];
     for(var i = 0; i< constants.width; i++){
         board[i] = [];
@@ -14,6 +14,11 @@ var setupboard = function(){
     return board;
 };
 
+var calculateNextGen = function (board){
+
+}
+
 module.exports = {
     example: example,
+    setupBoard: setupBoard,
 }
