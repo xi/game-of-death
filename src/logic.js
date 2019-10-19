@@ -14,7 +14,8 @@ var setupBoard = function(){
     return board;
 };
 
-var calculateNextGen = function (board){
+var calculateNextGen = function (state){
+    var board = state.board;
     calcBoard = [];
 
     //Calculate every player seperatly
@@ -52,7 +53,6 @@ var calculateNextGen = function (board){
         }
     }
 
-    return board;
 }
 
 var getFriendlyNeighboars = function(board, x, y, p){
