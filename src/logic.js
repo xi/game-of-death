@@ -16,7 +16,7 @@ var calculateNextGen = function (state){
     calcBoard = [];
 
     //Calculate every player seperatly
-    for(var p = 0; p< constants.playerCount; p++){
+    for(var p = 1; p< constants.playerCount; p++){
         calcBoard[p] = [];
         for(var x = 0; x< constants.width; x++){
             calcBoard[p][x] = [];
@@ -35,7 +35,7 @@ var calculateNextGen = function (state){
     for(var x = 0; x< constants.width; x++){
         for(var y = 0; y<constants.height; y++){
             var empty = true;
-            for(var p = 0; p< constants.playerCount; p++){
+            for(var p = 1; p< constants.playerCount; p++){
                 if(calcBoard[p][x][y] == p){
                     if(empty == false){
                         board[x][y] = constants.EMPTY;
