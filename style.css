@@ -7,6 +7,12 @@
     height: 0.5em;
     border: 1px solid silver;
 }
+.board-cell:not(:last-child) {
+    border-right: 0;
+}
+.board-row:not(:last-child) .board-cell {
+    border-bottom: 0;
+}
 
 .fg-1 {color: #e41a1c}
 .fg-2 {color: #377eb8}
