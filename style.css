@@ -1,0 +1,25 @@
+.board-row {
+    display: flex;
+}
+
+.board-cell {
+    width: 0.5em;
+    height: 0.5em;
+    border: 1px solid silver;
+}
+
+.board-cell.player-1 {
+    background-color: blue;
+}
+
+.board-cell.player-2 {
+    background-color: red;
+}
+
+.board-cell.player-3 {
+    background-color: green;
+}
+
+.board-cell.player-4 {
+    background-color: yellow;
+}
