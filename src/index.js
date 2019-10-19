@@ -10,6 +10,7 @@ var init = function(wrapper) {
         board: logic.setupBoard(),
         playing: false,
         steps: 0,
+        currentPlayer: 1,
     };
     tree = template(state);
     var element = vdom.mount(tree);
@@ -52,7 +53,7 @@ on('click', '.board-cell', function(event) {
     var board = row.parentElement;
     var x = Array.prototype.indexOf.call(row.children, this);
     var y = Array.prototype.indexOf.call(board.children, row);
-    state.board[y][x] = (state.board[y][x] + 1) % constants.playerCount;
+    state.board[y][x] = state.currentPlayer;
 });
 
 on('click', '.js-next-gen', function(event) {
@@ -66,6 +67,13 @@ on('click', '.js-next-gen', function(event) {
 on('click', '.js-play', function(event) {
     state.playing = !state.playing;
     play();
+});
+
+on('click', '.js-current-player', function(event) {
+    state.currentPlayer = (state.currentPlayer + 1) % constants.playerCount;
+    if (state.currentPlayer === 0) {
+        state.currentPlayer = 1;
+    }
 });
 
 init(document.body);

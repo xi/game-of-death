@@ -23,3 +23,8 @@
 .board-cell.player-4 {
     background-color: yellow;
 }
+
+.fg-1 {color: blue}
+.fg-2 {color: red}
+.fg-3 {color: green}
+.fg-4 {color: yellow}
