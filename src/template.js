@@ -18,7 +18,7 @@ var renderBoard = function(state) {
 module.exports = function(state) {
     return h('div', {}, [
         h('button', {'class': 'js-next-gen'}, 'Next Gen'),
-        h('button', {'class': 'js-play'}, 'Play'),
+        h('button', {'class': 'js-play'}, state.playing ? 'Pause' : 'Play'),
         renderBoard(state),
     ]);
 };
