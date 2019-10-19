@@ -1,11 +1,11 @@
-var vdom = require('petit-dom/dist/petit-dom.min');
-var template = require('./template.js');
-var logic = require('./logic.js');
-var constants = require('./constants.js');
+const vdom = require('petit-dom/dist/petit-dom.min');
+const template = require('./template.js');
+const logic = require('./logic.js');
+const constants = require('./constants.js');
 
-var state, tree;
+let state, tree;
 
-var init = function(wrapper) {
+const init = function(wrapper) {
     state = {
         board: logic.setupBoard(),
         playing: false,
@@ -13,19 +13,19 @@ var init = function(wrapper) {
         currentPlayer: 1,
     };
     tree = template(state);
-    var element = vdom.mount(tree);
+    const element = vdom.mount(tree);
     wrapper.append(element);
 };
 
-var update = function() {
-    newTree = template(state);
+const update = function() {
+    const newTree = template(state);
     vdom.patch(newTree, tree);
     tree = newTree;
 };
 
-var on = function(eventType, selector, fn) {
+const on = function(eventType, selector, fn) {
     document.addEventListener(eventType, function(event) {
-        var target = event.target.closest(selector);
+        const target = event.target.closest(selector);
         if (target) {
             fn.call(target, state, event);
             update();
@@ -33,7 +33,7 @@ var on = function(eventType, selector, fn) {
     });
 };
 
-var play = function() {
+const play = function() {
     if (!state.playing && !state.steps) {
         return;
     }
@@ -49,10 +49,10 @@ on('mousedown', '.board-cell', function(state) {
     if (state.playing || state.steps) {
         return;
     }
-    var row = this.parentElement;
-    var board = row.parentElement;
-    var x = Array.prototype.indexOf.call(row.children, this);
-    var y = Array.prototype.indexOf.call(board.children, row);
+    const row = this.parentElement;
+    const board = row.parentElement;
+    const x = Array.prototype.indexOf.call(row.children, this);
+    const y = Array.prototype.indexOf.call(board.children, row);
     if (state.board[y][x] === state.currentPlayer) {
         state.board[y][x] = constants.EMPTY;
     } else {
@@ -81,8 +81,8 @@ on('click', '.js-current-player', function(state) {
 });
 
 on('click', '.js-export', function(state) {
-    var download = document.createElement('a');
-    var s = JSON.stringify(state.board);
+    const download = document.createElement('a');
+    const s = JSON.stringify(state.board);
     download.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(s);
     download.download = 'board.json';
     download.hidden = true;

@@ -1,27 +1,27 @@
-var constants = require('./constants.js');
+const constants = require('./constants.js');
 
-var setupBoard = function() {
-    var board = [];
-    for (var y = 0; y < constants.height; y++) {
+const setupBoard = function() {
+    const board = [];
+    for (let y = 0; y < constants.height; y++) {
         board[y] = [];
-        for (var x = 0; x < constants.width; x++) {
+        for (let x = 0; x < constants.width; x++) {
             board[y][x] = constants.EMPTY;
         }
     }
     return board;
 };
 
-var calculateNextGen = function(state) {
-    var board = state.board;
-    var calcBoard = [];
+const calculateNextGen = function(state) {
+    const board = state.board;
+    const calcBoard = [];
 
     // Calculate every player seperatly
-    for (var p = 1; p < constants.playerCount; p++) {
+    for (let p = 1; p < constants.playerCount; p++) {
         calcBoard[p] = [];
-        for (var y = 0; y < constants.height; y++) {
+        for (let y = 0; y < constants.height; y++) {
             calcBoard[p][y] = [];
-            for (var x = 0; x < constants.width; x++) {
-                var friendlyNeighboars = getFriendlyNeighboars(board, x, y, p);
+            for (let x = 0; x < constants.width; x++) {
+                const friendlyNeighboars = getFriendlyNeighboars(board, x, y, p);
                 // Rules are here!
                 if (
                     (board[y][x] === p && friendlyNeighboars > 1 && friendlyNeighboars < 4) ||
@@ -36,11 +36,11 @@ var calculateNextGen = function(state) {
     }
 
     // Conflate all playerevolutions by clearing tiles that would be claimed by multiple players
-    for (var y = 0; y < constants.height; y++) {
-        for (var x = 0; x < constants.width; x++) {
-            var empty = true;
+    for (let y = 0; y < constants.height; y++) {
+        for (let x = 0; x < constants.width; x++) {
+            let empty = true;
             board[y][x] = constants.EMPTY;
-            for (var p = 1; p < constants.playerCount; p++) {
+            for (let p = 1; p < constants.playerCount; p++) {
                 if (calcBoard[p][y][x] === p) {
                     if (!empty) {
                         board[y][x] = constants.EMPTY;
@@ -55,10 +55,10 @@ var calculateNextGen = function(state) {
     }
 };
 
-var getFriendlyNeighboars = function(board, x, y, p){
-    var count = 0;
-    for (var deltaX = -1; deltaX <= 1; deltaX++) {
-        for (var deltaY = -1; deltaY <= 1; deltaY++) {
+const getFriendlyNeighboars = function(board, x, y, p){
+    let count = 0;
+    for (let deltaX = -1; deltaX <= 1; deltaX++) {
+        for (let deltaY = -1; deltaY <= 1; deltaY++) {
             if (deltaY + y < 0 || deltaY + y >= constants.height || deltaX + x < 0 || deltaX + x >= constants.width) {
                 continue;
             }

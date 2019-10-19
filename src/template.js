@@ -1,6 +1,6 @@
-var h = require('petit-dom/dist/petit-dom.min').h;
+const h = require('petit-dom/dist/petit-dom.min').h;
 
-var renderBoard = function(state) {
+const renderBoard = function(state) {
     return h(
         'div',
         {'class': 'board'},
@@ -15,7 +15,7 @@ var renderBoard = function(state) {
     );
 };
 
-var renderControls = function(state) {
+const renderControls = function(state) {
     return h('div', {'class': 'board-controls'}, [
         h('input', {type: 'number', value: 1, name: 'steps'}),
         h('button', {'class': 'js-next-gen'}, 'Next Gen'),
