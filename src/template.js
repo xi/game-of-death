@@ -9,7 +9,7 @@ var renderBoard = function(state) {
             {'class': 'board-row'},
             row.map(player => h(
                 'div',
-                {'class': 'board-cell player-' + player}
+                {'class': 'board-cell bg-' + player}
             ))
         ))
     );
