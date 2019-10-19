@@ -1,6 +1,7 @@
 var vdom = require('petit-dom/dist/petit-dom.min');
 var template = require('./template.js');
 var logic = require('./logic.js');
+var constants = require('./constants.js');
 
 var state, tree;
 
@@ -35,7 +36,7 @@ var play = function() {
     }
     logic.calculateNextGen(state);
     update();
-    setTimeout(play, 300);
+    setTimeout(play, constants.playTimeout);
 };
 
 on('click', '.board-cell', function(event) {
@@ -46,7 +47,7 @@ on('click', '.board-cell', function(event) {
     var board = row.parentElement;
     var x = Array.prototype.indexOf.call(row.children, this);
     var y = Array.prototype.indexOf.call(board.children, row);
-    state.board[y][x] = (state.board[y][x] + 1) % 5;
+    state.board[y][x] = (state.board[y][x] + 1) % constants.playerCount;
 });
 
 on('click', '.js-next-gen', function(event) {
