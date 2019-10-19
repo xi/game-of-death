@@ -21,6 +21,7 @@ var renderControls = function(state) {
         h('button', {'class': 'js-next-gen'}, 'Next Gen'),
         h('button', {'class': 'js-play'}, state.playing ? 'Pause' : 'Play'),
         h('button', {'class': 'js-current-player fg-' + state.currentPlayer}, 'Current Player'),
+        h('button', {'class': 'js-export'}, 'Export'),
     ]);
 };
 

@@ -1,6 +1,5 @@
 # TODO
 ## I. UI
-+ export function for "maps"
 +  [Multiplayer]
 +  Display: Where may a player build?
 +  menu

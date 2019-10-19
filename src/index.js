@@ -80,4 +80,15 @@ on('click', '.js-current-player', function(state) {
     }
 });
 
+on('click', '.js-export', function(state) {
+    var download = document.createElement('a');
+    var s = JSON.stringify(state.board);
+    download.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(s);
+    download.download = 'board.json';
+    download.hidden = true;
+    document.body.appendChild(download);
+    download.click();
+    download.remove();
+});
+
 init(document.body);
