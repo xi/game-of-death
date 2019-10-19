@@ -45,7 +45,7 @@ var play = function() {
     setTimeout(play, constants.playTimeout);
 };
 
-on('click', '.board-cell', function(state) {
+on('mousedown', '.board-cell', function(state) {
     if (state.playing || state.steps) {
         return;
     }
