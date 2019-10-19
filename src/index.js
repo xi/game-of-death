@@ -29,7 +29,19 @@ var on = function(eventType, selector, fn) {
     });
 };
 
+var play = function() {
+    if (!state.playing) {
+        return;
+    }
+    logic.calculateNextGen(state);
+    update();
+    setTimeout(play, 300);
+};
+
 on('click', '.board-cell', function(event) {
+    if (state.playing) {
+        return;
+    }
     var row = this.parentElement;
     var board = row.parentElement;
     var x = Array.prototype.indexOf.call(row.children, this);
@@ -38,7 +50,15 @@ on('click', '.board-cell', function(event) {
 });
 
 on('click', '.js-next-gen', function(event) {
+    if (state.playing) {
+        return;
+    }
     logic.calculateNextGen(state);
+});
+
+on('click', '.js-play', function(event) {
+    state.playing = !state.playing;
+    play();
 });
 
 init(document.body);
