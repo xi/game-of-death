@@ -17,6 +17,6 @@
   "license": "MIT",
   "dependencies": {
     "browserify": "^16.5.0",
-    "preact": "^10.0.1"
+    "petit-dom": "^0.2.2"
   }
 }
