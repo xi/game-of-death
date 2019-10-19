@@ -9,8 +9,7 @@ body {
 }
 
 .board-cell {
-    width: 0.5em;
-    height: 0.5em;
+    flex-grow: 1;
     border: 1px solid silver;
 }
 .board-cell:not(:last-child) {
@@ -18,6 +17,11 @@ body {
 }
 .board-row:not(:last-child) .board-cell {
     border-bottom: 0;
+}
+.board-cell::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
 }
 
 .board-controls {
