@@ -22,11 +22,11 @@ const calculateNextGen = function(state) {
             calcBoard[p][y] = [];
             for (let x = 0; x < constants.width; x++) {
                 if(board[y][x] === -1) continue;
-                const friendlyNeighboars = getFriendlyNeighboars(board, x, y, p);
+                const friendlyNeighbors = getFriendlyNeighbors(board, x, y, p);
                 // Rules are here!
                 if (
-                    (board[y][x] === p && constants.alive.includes(friendlyNeighboars)) ||
-                    (board[y][x] !== p && constants.born.includes(friendlyNeighboars))
+                    (board[y][x] === p && constants.alive.includes(friendlyNeighbors)) ||
+                    (board[y][x] !== p && constants.born.includes(friendlyNeighbors))
                 ) {
                     calcBoard[p][y][x] = p;
                 } else {
@@ -56,7 +56,7 @@ const calculateNextGen = function(state) {
     }
 };
 
-const getFriendlyNeighboars = function(board, x, y, p){
+const getFriendlyNeighbors = function(board, x, y, p){
     let count = 0;
     for (let deltaX = -1; deltaX <= 1; deltaX++) {
         for (let deltaY = -1; deltaY <= 1; deltaY++) {
