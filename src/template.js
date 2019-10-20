@@ -1,4 +1,4 @@
-const h = require('petit-dom/dist/petit-dom.min').h;
+const h = petitDom.h;
 
 const renderBoard = function(state) {
     return h(

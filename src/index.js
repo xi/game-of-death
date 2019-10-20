@@ -1,4 +1,3 @@
-const vdom = require('petit-dom/dist/petit-dom.min');
 const template = require('./template.js');
 const logic = require('./logic.js');
 const constants = require('./constants.js');
@@ -8,13 +7,13 @@ let state, tree;
 const init = function(wrapper) {
     state = {};
     tree = template(state);
-    const element = vdom.mount(tree);
+    const element = petitDom.mount(tree);
     wrapper.append(element);
 };
 
 const update = function() {
     const newTree = template(state);
-    vdom.patch(newTree, tree);
+    petitDom.patch(newTree, tree);
     tree = newTree;
 };
 
