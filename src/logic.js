@@ -12,7 +12,7 @@ const setupBoard = function() {
 };
 
 const calculateNextGen = function(state) {
-    const board = state.board;
+    const board = state.game.board;
     const calcBoard = [];
 
     // Calculate every player seperatly

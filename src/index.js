@@ -7,11 +7,13 @@ let state, tree;
 
 const init = function(wrapper) {
     state = {
-        board: logic.setupBoard(),
-        playing: false,
-        steps: 0,
-        currentPlayer: 1,
-        sandbox: true,
+        game: {
+            board: logic.setupBoard(),
+            currentPlayer: 1,
+            playing: false,
+            steps: 0,
+            sandbox: true,
+        },
     };
     tree = template(state);
     const element = vdom.mount(tree);
@@ -35,11 +37,11 @@ const on = function(eventType, selector, fn) {
 };
 
 const play = function() {
-    if (!state.playing && !state.steps) {
+    if (!state.game.playing && !state.game.steps) {
         return;
     }
-    if (!state.playing) {
-        state.steps -= 1;
+    if (!state.game.playing) {
+        state.game.steps -= 1;
     }
     logic.calculateNextGen(state);
     update();
@@ -49,7 +51,7 @@ const play = function() {
 };
 
 on('mousedown', '.board-cell', function(state, event) {
-    if (state.playing || state.steps) {
+    if (state.game.playing || state.game.steps) {
         return;
     }
     if (event.buttons != 1) {
@@ -59,34 +61,34 @@ on('mousedown', '.board-cell', function(state, event) {
     const board = row.parentElement;
     const x = Array.prototype.indexOf.call(row.children, this);
     const y = Array.prototype.indexOf.call(board.children, row);
-    const currentPlayer = state.currentPlayer === constants.EMPTY ? constants.GAIA : state.currentPlayer;
-    if (state.board[y][x] === currentPlayer) {
-        state.board[y][x] = constants.EMPTY;
+    const currentPlayer = state.game.currentPlayer === constants.EMPTY ? constants.GAIA : state.game.currentPlayer;
+    if (state.game.board[y][x] === currentPlayer) {
+        state.game.board[y][x] = constants.EMPTY;
     } else {
-        state.board[y][x] = currentPlayer;
+        state.game.board[y][x] = currentPlayer;
     }
 });
 
 on('click', '.js-next-gen', function(state) {
-    if (state.playing || state.steps) {
+    if (state.game.playing || state.game.steps) {
         return;
     }
-    state.steps = document.querySelector('[name="steps"]').value;
+    state.game.steps = document.querySelector('[name="steps"]').value;
     play();
 });
 
 on('click', '.js-play', function(state) {
-    state.playing = !state.playing;
+    state.game.playing = !state.game.playing;
     play();
 });
 
 on('click', '.js-current-player', function(state) {
-    state.currentPlayer = (state.currentPlayer + 1) % constants.playerCount;
+    state.game.currentPlayer = (state.game.currentPlayer + 1) % constants.playerCount;
 });
 
 on('click', '.js-export', function(state) {
     const download = document.createElement('a');
-    const s = JSON.stringify(state.board);
+    const s = JSON.stringify(state.game.board);
     download.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(s);
     download.download = 'board.json';
     download.hidden = true;
