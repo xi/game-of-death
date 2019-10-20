@@ -111,6 +111,7 @@ on('click', '.js-menu-scenario', function(state) {
     const i = parseInt(this.dataset.scenario, 10);
     state.game = {
         board: clone(scenarios[i].board),
+        description: scenarios[i].description,
         currentPlayer: 1,
         playing: false,
         steps: 0,

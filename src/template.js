@@ -53,6 +53,7 @@ export default function(state) {
     if (state.game) {
         return h('div', {}, [
             renderControls(state),
+            h('p', {}, state.game.description),
             renderBoard(state),
         ]);
     } else {
