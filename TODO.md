@@ -27,6 +27,8 @@
     + travel to destiny
         + race against AI
     + tutorial level 
+    + you must destroy an enemy structure. It consists of several 4-blocks and an additional structure. the tick is to trigger the structure to "explode" and destroy the blocks with it
+        + background: these blocks are hard to destroy for enemoies, but easy by yourself
 
 + aditional rules
     + where may a palyer build?
