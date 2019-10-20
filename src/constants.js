@@ -1,5 +1,6 @@
 module.exports = {
     EMPTY: 0,
+    GAIA: -1,
 
     alive: [2,3],
     born: [3],

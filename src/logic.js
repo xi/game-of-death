@@ -21,7 +21,7 @@ const calculateNextGen = function(state) {
         for (let y = 0; y < constants.height; y++) {
             calcBoard[p][y] = [];
             for (let x = 0; x < constants.width; x++) {
-                if(board[y][x] === -1) continue;
+                if (board[y][x] === constants.GAIA) continue;
                 const friendlyNeighbors = getFriendlyNeighbors(board, x, y, p);
                 // Rules are here!
                 if (
