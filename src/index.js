@@ -59,10 +59,11 @@ on('mousedown', '.board-cell', function(state, event) {
     const board = row.parentElement;
     const x = Array.prototype.indexOf.call(row.children, this);
     const y = Array.prototype.indexOf.call(board.children, row);
-    if (state.board[y][x] === state.currentPlayer) {
+    const currentPlayer = state.currentPlayer === constants.EMPTY ? constants.GAIA : state.currentPlayer;
+    if (state.board[y][x] === currentPlayer) {
         state.board[y][x] = constants.EMPTY;
     } else {
-        state.board[y][x] = state.currentPlayer;
+        state.board[y][x] = currentPlayer;
     }
 });
 
@@ -81,9 +82,6 @@ on('click', '.js-play', function(state) {
 
 on('click', '.js-current-player', function(state) {
     state.currentPlayer = (state.currentPlayer + 1) % constants.playerCount;
-    if (state.currentPlayer === 0) {
-        state.currentPlayer = 1;
-    }
 });
 
 on('click', '.js-export', function(state) {
