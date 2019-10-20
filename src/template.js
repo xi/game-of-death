@@ -42,7 +42,7 @@ const renderMenu = function(state) {
     ]);
 };
 
-module.exports = function(state) {
+export default function(state) {
     if (state.game) {
         return h('div', {}, [
             renderControls(state),

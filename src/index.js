@@ -1,6 +1,6 @@
-const template = require('./template.js');
-const logic = require('./logic.js');
-const constants = require('./constants.js');
+import template from './template.js';
+import * as logic from './logic.js';
+import * as constants from './constants.js';
 
 let state, tree;
 

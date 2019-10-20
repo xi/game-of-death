@@ -1,13 +1,11 @@
-module.exports = {
-    EMPTY: 0,
-    GAIA: -1,
+export const EMPTY = 0;
+export const GAIA = -1;
 
-    alive: [2,3],
-    born: [3],
+export const alive = [2,3];
+export const born = [3];
 
-    playerCount: 5,
-    height: 40,
-    width: 60,
+export const playerCount = 5;
+export const height = 40;
+export const width = 60;
 
-    playTimeout: 200,
-}
+export const playTimeout = 200;

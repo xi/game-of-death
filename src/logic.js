@@ -1,6 +1,6 @@
-const constants = require('./constants.js');
+import * as constants from './constants.js';
 
-const setupBoard = function() {
+export const setupBoard = function() {
     const board = [];
     for (let y = 0; y < constants.height; y++) {
         board[y] = [];
@@ -11,7 +11,7 @@ const setupBoard = function() {
     return board;
 };
 
-const calculateNextGen = function(state) {
+export const calculateNextGen = function(state) {
     const board = state.game.board;
     const calcBoard = [];
 
@@ -69,9 +69,4 @@ const getFriendlyNeighbors = function(board, x, y, p){
         }
     }
     return count;
-};
-
-module.exports = {
-    setupBoard: setupBoard,
-    calculateNextGen: calculateNextGen,
 };
