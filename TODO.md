@@ -2,9 +2,8 @@
 ## I. UI
 +  [Multiplayer]
 +  Display: Where may a player build?
-+  menu
 +  styling
-+  better drawing
++  keyboard controls
 
 ## II. Logic
 + ~~undestructible environment (no evolution, no destruction) "Gaia"~~
