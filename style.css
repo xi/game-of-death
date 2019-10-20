@@ -4,6 +4,17 @@ body {
     padding: 0.5em;
 }
 
+.menu {
+    max-width: 15em;
+    margin: 10vh auto;
+}
+
+.menu button {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
 .board-row {
     display: flex;
 }

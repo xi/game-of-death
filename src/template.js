@@ -24,19 +24,31 @@ const renderControls = function(state) {
             h('button', {'class': 'js-play'}, state.game.playing ? 'Pause' : 'Play'),
             h('button', {'class': 'js-current-player fg-' + state.game.currentPlayer}, 'Current Player'),
             h('button', {'class': 'js-export'}, 'Export'),
+            h('button', {'class': 'js-quit'}, 'Quit'),
         ]);
     } else {
         return h('div', {'class': 'board-controls'}, [
             h('input', {type: 'hidden', value: 50, name: 'speed'}),
             h('input', {type: 'hidden', value: 1, name: 'steps'}),
             h('button', {'class': 'js-play'}, state.game.playing ? 'Pause' : 'Play'),
+            h('button', {'class': 'js-quit'}, 'Quit'),
         ]);
     }
 };
 
-module.exports = function(state) {
-    return h('div', {}, [
-        renderControls(state),
-        renderBoard(state),
+const renderMenu = function(state) {
+    return h('div', {'class': 'menu'}, [
+        h('button', {'class': 'js-menu-sandbox'}, 'Start sandbox game'),
     ]);
+};
+
+module.exports = function(state) {
+    if (state.game) {
+        return h('div', {}, [
+            renderControls(state),
+            renderBoard(state),
+        ]);
+    } else {
+        return renderMenu(state);
+    }
 };

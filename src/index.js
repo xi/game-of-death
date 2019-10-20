@@ -6,15 +6,7 @@ const constants = require('./constants.js');
 let state, tree;
 
 const init = function(wrapper) {
-    state = {
-        game: {
-            board: logic.setupBoard(),
-            currentPlayer: 1,
-            playing: false,
-            steps: 0,
-            sandbox: true,
-        },
-    };
+    state = {};
     tree = template(state);
     const element = vdom.mount(tree);
     wrapper.append(element);
@@ -95,6 +87,20 @@ on('click', '.js-export', function(state) {
     document.body.appendChild(download);
     download.click();
     download.remove();
+});
+
+on('click', '.js-quit', function(state) {
+    state.game = null;
+});
+
+on('click', '.js-menu-sandbox', function(state) {
+    state.game = {
+        board: logic.setupBoard(),
+        currentPlayer: 1,
+        playing: false,
+        steps: 0,
+        sandbox: true,
+    }
 });
 
 init(document.body);
