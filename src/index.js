@@ -1,4 +1,5 @@
 import template from './template.js';
+import scenarios from './scenarios.js';
 import * as logic from './logic.js';
 import * as constants from './constants.js';
 
@@ -25,6 +26,10 @@ const on = function(eventType, selector, fn) {
             update();
         }
     });
+};
+
+const clone = function(obj) {
+    return JSON.parse(JSON.stringify(obj));
 };
 
 const play = function() {
@@ -99,6 +104,16 @@ on('click', '.js-menu-sandbox', function(state) {
         playing: false,
         steps: 0,
         sandbox: true,
+    }
+});
+
+on('click', '.js-menu-scenario', function(state) {
+    const i = parseInt(this.dataset.scenario, 10);
+    state.game = {
+        board: clone(scenarios[i].board),
+        currentPlayer: 1,
+        playing: false,
+        steps: 0,
     }
 });
 

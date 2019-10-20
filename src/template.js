@@ -1,3 +1,5 @@
+import scenarios from './scenarios.js';
+
 const h = petitDom.h;
 
 const renderBoard = function(state) {
@@ -28,6 +30,7 @@ const renderControls = function(state) {
         ]);
     } else {
         return h('div', {'class': 'board-controls'}, [
+            h('input', {type: 'range', value: 50, name: 'speed'}),
             h('input', {type: 'hidden', value: 50, name: 'speed'}),
             h('input', {type: 'hidden', value: 1, name: 'steps'}),
             h('button', {'class': 'js-play'}, state.game.playing ? 'Pause' : 'Play'),
@@ -38,8 +41,12 @@ const renderControls = function(state) {
 
 const renderMenu = function(state) {
     return h('div', {'class': 'menu'}, [
-        h('button', {'class': 'js-menu-sandbox'}, 'Start sandbox game'),
-    ]);
+        h('button', {'class': 'js-menu-sandbox'}, 'Start sandbox game')
+    ].concat(scenarios.map((scenario, i) => h(
+        'button',
+        {'class': 'js-menu-scenario', 'data-scenario': i},
+        'Start scenario: ' + scenario.title,
+    ))));
 };
 
 export default function(state) {
