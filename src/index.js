@@ -48,8 +48,11 @@ const play = function() {
     setTimeout(play, timeout);
 };
 
-on('mousedown', '.board-cell', function(state) {
+on('mousedown', '.board-cell', function(state, event) {
     if (state.playing || state.steps) {
+        return;
+    }
+    if (event.buttons != 1) {
         return;
     }
     const row = this.parentElement;
