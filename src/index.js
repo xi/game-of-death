@@ -33,7 +33,7 @@ const clone = function(obj) {
 };
 
 const play = function() {
-    if (!state.game || !state.game.playing && !state.game.steps)) {
+    if (!state.game.playing && !state.game.steps) {
         return;
     }
     if (!state.game.playing) {
