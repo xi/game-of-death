@@ -103,6 +103,7 @@ on('click', '.js-menu-sandbox', function(state) {
         currentPlayer: 1,
         playing: false,
         steps: 0,
+        turnCounter: 0,
         sandbox: true,
     }
 });
@@ -112,9 +113,11 @@ on('click', '.js-menu-scenario', function(state) {
     state.game = {
         board: clone(scenarios[i].board),
         description: scenarios[i].description,
+        winCondition: scenarios[i].winCondition,
         currentPlayer: 1,
         playing: false,
         steps: 0,
+        turnCounter: 0,
     }
 });
 

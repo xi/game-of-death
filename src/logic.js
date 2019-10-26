@@ -12,6 +12,7 @@ export const setupBoard = function() {
 };
 
 export const calculateNextGen = function(state) {
+    state.game.turnCounter++;
     const board = state.game.board;
     const calcBoard = [];
 
@@ -34,7 +35,6 @@ export const calculateNextGen = function(state) {
             }
         }
     }
-
     // Conflate all playerevolutions by clearing tiles that would be claimed by multiple players
     for (let y = 0; y < constants.height; y++) {
         for (let x = 0; x < constants.width; x++) {
@@ -54,6 +54,10 @@ export const calculateNextGen = function(state) {
             }
         }
     }
+
+    //Scenariostuff
+    var winstate = state.game.winCondition(state);
+    return winstate;
 };
 
 const getFriendlyNeighbors = function(board, x, y, p){
@@ -70,3 +74,11 @@ const getFriendlyNeighbors = function(board, x, y, p){
     }
     return count;
 };
+
+export const compareBoards = function(boardA, boardB){
+    for (let y = 0; y < constants.height; y++) {
+        for (let x = 0; x < constants.width; x++) {
+            if(boardA[x][y] != boardB[x][y]) return false;
+    }}
+    return true;
+}
