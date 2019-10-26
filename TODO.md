@@ -1,6 +1,5 @@
 # TODO
 ## I. UI
-<<<<<<< HEAD
 +  [Multiplayer]
 +  Display: Where may a player build?
 +  styling
@@ -9,44 +8,34 @@
 +  play x step -> play & set interrupt flag for turnCount = curentTurnCount + x
 +  Reset
 +  Save list of solved scenarios browserside
-=======
-+ [Multiplayer]
-+ Display: Where may a player build?
-+ keyboard controls
-+ better win/loose indication
-+ structure board controls
->>>>>>> 3170dbee1004ac281a08b06e1ec1c8b77464ced9
 
 ## II. Logic
++ ~~undestructible environment (no evolution, no destruction) "Gaia"~~
 + Szenario objects (loadable)
-<<<<<<< HEAD
     + ~~titel~~
     + img link (preview)
     + ~~description~~
     + ~~maps~~
-    + wincondition
-=======
-    + img link (preview)
->>>>>>> 3170dbee1004ac281a08b06e1ec1c8b77464ced9
+    + ~~wincondition~~
 + [Multiplayer]
-+ Logic: Where may a player build?
++  Logic: Where may a player build?
 
 
 ## III. Gamedesign
 + wincondition
     + annihilate everyone else
     + defend structure X
-    + survive
+    + survive 
     + cover area of size n
     + travel to destiny
         + race against AI
-    + tutorial level
+    + tutorial level 
     + you must destroy an enemy structure. It consists of several 4-blocks and an additional structure. the tick is to trigger the structure to "explode" and destroy the blocks with it
         + background: these blocks are hard to destroy for enemoies, but easy by yourself
 
 + aditional rules
-    + where may a player build?
-    + how many rounds until the game ends
+    + where may a palyer build?
+    + how many rounds untill the game ends
 
 + Multiplayer
     + Controll points
