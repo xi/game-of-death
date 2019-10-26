@@ -63,13 +63,21 @@ const renderMenu = function(state) {
     ))));
 };
 
+const renderWinState = function(state) {
+    if (state.winState) {
+        return h('p', {}, 'You have won');
+    } else if (state.winState === false) {
+        return h('p', {}, 'You have lost');
+    }
+};
+
 export default function(state) {
     if (state.game) {
         return h('div', {}, [
             renderControls(state),
             h('p', {}, state.game.description),
             renderBoard(state),
-            state.winState ? h('p', {}, 'You have won') : null,
+            renderWinState(state),
         ]);
     } else {
         return renderMenu(state);

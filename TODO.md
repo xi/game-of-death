@@ -6,7 +6,6 @@
 + reset board after play
 + better win/loose indication
 + pause on win/loose
-+ refactor steps
 + structure board controls
 
 ## II. Logic
