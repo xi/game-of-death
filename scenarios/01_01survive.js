@@ -10,7 +10,7 @@ export default {
         if (logic.compareBoards(scenBoard, state.game.board)) {
             return false;
         }
-        if (state.game.turnCounter > 100) {
+        if (state.game.turnCounter >= 100) {
             return true;
         }
     },
