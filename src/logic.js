@@ -55,8 +55,10 @@ export const calculateNextGen = function(state) {
         }
     }
 
-    //Scenariostuff
-    return (state.game.winCondition)?state.game.winCondition(state):null;
+    // Scenariostuff
+    if (state.game.winCondition) {
+        return state.game.winCondition(state);
+    }
 };
 
 const getFriendlyNeighbors = function(board, x, y, p){
