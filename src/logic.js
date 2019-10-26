@@ -77,7 +77,8 @@ const getFriendlyNeighbors = function(board, x, y, p){
 export const compareBoards = function(boardA, boardB){
     for (let y = 0; y < constants.height; y++) {
         for (let x = 0; x < constants.width; x++) {
-            if(boardA[y][x] != boardB[y][x]) return false;
-    }}
+            if (boardA[y][x] !== boardB[y][x]) return false;
+        }
+    }
     return true;
-}
+};
