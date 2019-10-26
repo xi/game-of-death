@@ -57,7 +57,11 @@ export const calculateNextGen = function(state) {
 
     // Scenariostuff
     if (state.game.winCondition) {
-        state.winState = state.game.winCondition(state);
+        const winState = state.game.winCondition(state);
+        if ((winState === true || winState === false) && winState !== state.game.winState) {
+            state.game.winState = winState;
+            state.game.playing = false;
+        }
     }
 };
 
@@ -83,4 +87,14 @@ export const compareBoards = function(boardA, boardB){
         }
     }
     return true;
+};
+
+export const countPlayer = function(board, player) {
+    let count = 0;
+    for (let y = 0; y < board.length; y++) {
+        for (let x = 0; x < board[y].length; x++) {
+            if (board[y][x] === player) count += 1;
+        }
+    }
+    return count;
 };

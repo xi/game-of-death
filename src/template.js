@@ -11,7 +11,7 @@ const renderBoard = function(state) {
             {'class': 'board-row'},
             row.map(player => h(
                 'div',
-                {'class': 'board-cell bg-' + player}
+                {'class': `board-cell bg-${player}`}
             ))
         ))
     );
@@ -30,7 +30,9 @@ const renderControls = function(state) {
             ' ',
             h('button', {'class': 'js-play'}, state.game.playing ? 'Pause' : 'Play'),
             ' ',
-            h('button', {'class': 'js-current-player fg-' + state.game.currentPlayer}, 'Current Player'),
+            h('button', {'class': 'js-reset'}, 'Reset'),
+            ' ',
+            h('button', {'class': `js-current-player fg-${state.game.currentPlayer}`}, 'Current Player'),
             ' ',
             h('button', {'class': 'js-export'}, 'Export'),
             ' ',
@@ -48,6 +50,8 @@ const renderControls = function(state) {
             ' ',
             h('button', {'class': 'js-play'}, state.game.playing ? 'Pause' : 'Play'),
             ' ',
+            h('button', {'class': 'js-reset'}, 'Reset'),
+            ' ',
             h('button', {'class': 'js-quit'}, 'Quit'),
         ]);
     }
@@ -55,12 +59,21 @@ const renderControls = function(state) {
 
 const renderMenu = function(state) {
     return h('div', {'class': 'menu'}, [
+        h('img', {'class': 'logo', 'src': 'logo.jpg', 'alt': 'Game of Death'}),
         h('button', {'class': 'js-menu-sandbox'}, 'Start sandbox game')
     ].concat(scenarios.map((scenario, i) => h(
         'button',
         {'class': 'js-menu-scenario', 'data-scenario': i},
-        'Start scenario: ' + scenario.title,
+        `Start scenario: ${scenario.title}`,
     ))));
+};
+
+const renderWinState = function(state) {
+    if (state.game.winState) {
+        return h('p', {}, 'You have won');
+    } else if (state.game.winState === false) {
+        return h('p', {}, 'You have lost');
+    }
 };
 
 export default function(state) {
@@ -69,7 +82,7 @@ export default function(state) {
             renderControls(state),
             h('p', {}, state.game.description),
             renderBoard(state),
-            state.winState ? h('p', {}, 'You have won') : null,
+            renderWinState(state),
         ]);
     } else {
         return renderMenu(state);

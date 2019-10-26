@@ -33,11 +33,14 @@ const clone = function(obj) {
 };
 
 const play = function() {
-    if (!state.game.playing && !state.game.steps) {
+    if (!state.game.playing) {
         return;
     }
-    if (!state.game.playing) {
+    if (state.game.steps) {
         state.game.steps -= 1;
+        if (!state.game.steps) {
+            state.game.playing = false;
+        }
     }
     logic.calculateNextGen(state);
     update();
@@ -47,7 +50,7 @@ const play = function() {
 };
 
 on('mousedown', '.board-cell', function(state, event) {
-    if (state.game.playing || state.game.steps) {
+    if (state.game.playing) {
         return;
     }
     if (event.buttons != 1) {
@@ -60,22 +63,35 @@ on('mousedown', '.board-cell', function(state, event) {
     const currentPlayer = state.game.currentPlayer === constants.EMPTY ? constants.GAIA : state.game.currentPlayer;
     if (state.game.board[y][x] === currentPlayer) {
         state.game.board[y][x] = constants.EMPTY;
-    } else {
+    } else if (state.game.board[y][x] === constants.EMPTY) {
         state.game.board[y][x] = currentPlayer;
     }
 });
 
 on('click', '.js-next-gen', function(state) {
-    if (state.game.playing || state.game.steps) {
+    if (state.game.playing) {
         return;
     }
     state.game.steps = document.querySelector('[name="steps"]').value;
+    state.game.playing = true;
     play();
 });
 
 on('click', '.js-play', function(state) {
+    if (!state.game.playing) {
+        state.game.gameOnPlay.board = clone(state.game.board);
+        state.game.gameOnPlay.turnCounter = state.game.turnCounter;
+    }
     state.game.playing = !state.game.playing;
     play();
+});
+
+on('click', '.js-reset', function(state) {
+    if (state.game.playing) {
+        return;
+    }
+    state.game.board = clone(state.game.gameOnPlay.board);
+    state.game.turnCounter = state.game.gameOnPlay.turnCounter;
 });
 
 on('click', '.js-current-player', function(state) {
@@ -105,6 +121,10 @@ on('click', '.js-menu-sandbox', function(state) {
         steps: 0,
         turnCounter: 0,
         sandbox: true,
+        gameOnPlay: {
+            board: logic.setupBoard(),
+            turnCounter: 0,
+        },
     }
 });
 
@@ -118,6 +138,10 @@ on('click', '.js-menu-scenario', function(state) {
         playing: false,
         steps: 0,
         turnCounter: 0,
+        gameOnPlay: {
+            board: clone(scenarios[i].board),
+            turnCounter: 0,
+        },
     }
 });
 
