@@ -33,11 +33,14 @@ const clone = function(obj) {
 };
 
 const play = function() {
-    if (!state.game.playing && !state.game.steps) {
+    if (!state.game.playing) {
         return;
     }
-    if (!state.game.playing) {
+    if (state.game.steps) {
         state.game.steps -= 1;
+        if (!state.game.steps) {
+            state.game.playing = false;
+        }
     }
     logic.calculateNextGen(state);
     update();
@@ -47,7 +50,7 @@ const play = function() {
 };
 
 on('mousedown', '.board-cell', function(state, event) {
-    if (state.game.playing || state.game.steps) {
+    if (state.game.playing) {
         return;
     }
     if (event.buttons != 1) {
@@ -66,10 +69,11 @@ on('mousedown', '.board-cell', function(state, event) {
 });
 
 on('click', '.js-next-gen', function(state) {
-    if (state.game.playing || state.game.steps) {
+    if (state.game.playing) {
         return;
     }
     state.game.steps = document.querySelector('[name="steps"]').value;
+    state.game.playing = true;
     play();
 });
 
