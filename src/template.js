@@ -20,6 +20,8 @@ const renderBoard = function(state) {
 const renderControls = function(state) {
     if (state.game.sandbox) {
         return h('div', {'class': 'board-controls'}, [
+            state.game.turnCounter,
+            ' ',
             h('input', {type: 'range', value: 50, name: 'speed'}),
             ' ',
             h('input', {type: 'number', value: 1, name: 'steps'}),
@@ -36,6 +38,8 @@ const renderControls = function(state) {
         ]);
     } else {
         return h('div', {'class': 'board-controls'}, [
+            state.game.turnCounter,
+            ' ',
             h('input', {type: 'range', value: 50, name: 'speed'}),
             ' ',
             h('input', {type: 'hidden', value: 50, name: 'speed'}),
