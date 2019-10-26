@@ -60,7 +60,7 @@ on('mousedown', '.board-cell', function(state, event) {
     const currentPlayer = state.game.currentPlayer === constants.EMPTY ? constants.GAIA : state.game.currentPlayer;
     if (state.game.board[y][x] === currentPlayer) {
         state.game.board[y][x] = constants.EMPTY;
-    } else {
+    } else if (state.game.board[y][x] === constants.EMPTY) {
         state.game.board[y][x] = currentPlayer;
     }
 });
