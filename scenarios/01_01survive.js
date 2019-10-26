@@ -7,7 +7,7 @@ export default {
   "description": "Try and survive for 100 turns.",
   "board": scenBoard,
   "winCondition": function(state) {
-    if (!logic.compareBoards(scenBoard, state.game.board)) {
+    if (logic.compareBoards(scenBoard, state.game.board)) {
         return false;
     }
     if (state.game.turnCounter > 100) {
