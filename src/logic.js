@@ -39,6 +39,7 @@ export const calculateNextGen = function(state) {
     // Conflate all playerevolutions by clearing tiles that would be claimed by multiple players
     for (let y = 0; y < constants.height; y++) {
         for (let x = 0; x < constants.width; x++) {
+            if(board[y][x] == constants.GAIA) continue;
             let empty = true;
             board[y][x] = constants.EMPTY;
             for (let p = 1; p < constants.playerCount; p++) {
