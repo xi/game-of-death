@@ -78,8 +78,20 @@ on('click', '.js-next-gen', function(state) {
 });
 
 on('click', '.js-play', function(state) {
+    if (!state.game.playing) {
+        state.game.gameOnPlay.board = clone(state.game.board);
+        state.game.gameOnPlay.turnCounter = state.game.turnCounter;
+    }
     state.game.playing = !state.game.playing;
     play();
+});
+
+on('click', '.js-reset', function(state) {
+    if (state.game.playing) {
+        return;
+    }
+    state.game.board = clone(state.game.gameOnPlay.board);
+    state.game.turnCounter = state.game.gameOnPlay.turnCounter;
 });
 
 on('click', '.js-current-player', function(state) {
@@ -109,6 +121,10 @@ on('click', '.js-menu-sandbox', function(state) {
         steps: 0,
         turnCounter: 0,
         sandbox: true,
+        gameOnPlay: {
+            board: logic.setupBoard(),
+            turnCounter: 0,
+        },
     }
 });
 
@@ -122,6 +138,10 @@ on('click', '.js-menu-scenario', function(state) {
         playing: false,
         steps: 0,
         turnCounter: 0,
+        gameOnPlay: {
+            board: clone(scenarios[i].board),
+            turnCounter: 0,
+        },
     }
 });
 

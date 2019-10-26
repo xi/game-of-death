@@ -3,7 +3,6 @@
 + [Multiplayer]
 + Display: Where may a player build?
 + keyboard controls
-+ reset board after play
 + better win/loose indication
 + structure board controls
 
