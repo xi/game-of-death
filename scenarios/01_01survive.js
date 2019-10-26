@@ -5,7 +5,7 @@ export default {
   "description": "Try and survive for 100 turns.",
   "board": scenBoard,
   "winCondition" : function(gameState){
-    var winState;
+    var winState = {};
     if(!logic.compareBoards(scenBoard, gameState.board)) {
         winState.lost = true;  
         winState.decided = true;
