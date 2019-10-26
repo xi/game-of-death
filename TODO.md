@@ -4,14 +4,18 @@
 +  Display: Where may a player build?
 +  styling
 +  keyboard controls
++  interrupt game on win/loss
++  play x step -> play & set interrupt flag for turnCount = curentTurnCount + x
++  Reset
++  Save list of solved scenarios browserside
 
 ## II. Logic
 + ~~undestructible environment (no evolution, no destruction) "Gaia"~~
 + Szenario objects (loadable)
-    + titel
+    + ~~titel~~
     + img link (preview)
-    + description
-    + maps
+    + ~~description~~
+    + ~~maps~~
     + wincondition
 + [Multiplayer]
 +  Logic: Where may a player build?
