@@ -5,7 +5,6 @@
 + keyboard controls
 + reset board after play
 + better win/loose indication
-+ pause on win/loose
 + structure board controls
 
 ## II. Logic
