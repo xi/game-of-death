@@ -55,6 +55,7 @@ const renderControls = function(state) {
 
 const renderMenu = function(state) {
     return h('div', {'class': 'menu'}, [
+        h('img', {'class': 'logo', 'src': 'logo.jpg', 'alt': 'Game of Death'}),
         h('button', {'class': 'js-menu-sandbox'}, 'Start sandbox game')
     ].concat(scenarios.map((scenario, i) => h(
         'button',

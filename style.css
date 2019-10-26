@@ -71,6 +71,11 @@ input[type=range]:focus::-webkit-slider-thumb {
     background-color: var(--bg);
 }
 
+.logo {
+    max-width: 100%;
+    margin: 0 auto 3em;
+}
+
 .menu {
     max-width: 15em;
     margin: 10vh auto;
