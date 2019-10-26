@@ -69,6 +69,7 @@ export default function(state) {
             renderControls(state),
             h('p', {}, state.game.description),
             renderBoard(state),
+            state.winState ? h('p', {}, 'You have won') : null,
         ]);
     } else {
         return renderMenu(state);
