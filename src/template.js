@@ -64,9 +64,9 @@ const renderMenu = function(state) {
 };
 
 const renderWinState = function(state) {
-    if (state.winState) {
+    if (state.game.winState) {
         return h('p', {}, 'You have won');
-    } else if (state.winState === false) {
+    } else if (state.game.winState === false) {
         return h('p', {}, 'You have lost');
     }
 };

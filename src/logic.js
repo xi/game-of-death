@@ -57,7 +57,7 @@ export const calculateNextGen = function(state) {
 
     // Scenariostuff
     if (state.game.winCondition) {
-        state.winState = state.game.winCondition(state);
+        state.game.winState = state.game.winCondition(state);
     }
 };
 
