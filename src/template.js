@@ -11,7 +11,7 @@ const renderBoard = function(state) {
             {'class': 'board-row'},
             row.map(player => h(
                 'div',
-                {'class': 'board-cell bg-' + player}
+                {'class': `board-cell bg-${player}`}
             ))
         ))
     );
@@ -30,7 +30,7 @@ const renderControls = function(state) {
             ' ',
             h('button', {'class': 'js-play'}, state.game.playing ? 'Pause' : 'Play'),
             ' ',
-            h('button', {'class': 'js-current-player fg-' + state.game.currentPlayer}, 'Current Player'),
+            h('button', {'class': `js-current-player fg-${state.game.currentPlayer}`}, 'Current Player'),
             ' ',
             h('button', {'class': 'js-export'}, 'Export'),
             ' ',
@@ -59,7 +59,7 @@ const renderMenu = function(state) {
     ].concat(scenarios.map((scenario, i) => h(
         'button',
         {'class': 'js-menu-scenario', 'data-scenario': i},
-        'Start scenario: ' + scenario.title,
+        `Start scenario: ${scenario.title}`,
     ))));
 };
 
