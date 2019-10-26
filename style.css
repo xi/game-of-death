@@ -89,6 +89,8 @@ input[type=range]:focus::-webkit-slider-thumb {
 .board-cell {
     flex-grow: 1;
     border: 1px solid var(--border);
+    background-color: var(--cell-color, transparent);
+    box-shadow: 0 0 0.5em var(--cell-color, transparent);
 }
 .board-cell:not(:last-child) {
     border-right: 0;
@@ -111,8 +113,8 @@ input[type=range]:focus::-webkit-slider-thumb {
 .fg-3 {--fg: var(--player3)}
 .fg-4 {--fg: var(--player4)}
 
-.bg--1 {background-color: var(--gaia)}
-.bg-1 {background-color: var(--player1)}
-.bg-2 {background-color: var(--player2)}
-.bg-3 {background-color: var(--player3)}
-.bg-4 {background-color: var(--player4)}
+.bg--1 {--cell-color: var(--gaia)}
+.bg-1 {--cell-color: var(--player1)}
+.bg-2 {--cell-color: var(--player2)}
+.bg-3 {--cell-color: var(--player3)}
+.bg-4 {--cell-color: var(--player4)}
