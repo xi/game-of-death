@@ -61,6 +61,7 @@ on('mousedown', '.board-cell', function(state, event) {
     const x = Array.prototype.indexOf.call(row.children, this);
     const y = Array.prototype.indexOf.call(board.children, row);
     const currentPlayer = state.game.currentPlayer === constants.EMPTY ? constants.GAIA : state.game.currentPlayer;
+	if ((state.game.limitBuildSpaceA != null && state.game.limitBuildSpaceB != null) && (x < state.game.limitBuildSpaceA.x || x > state.game.limitBuildSpaceB.x || y < state.game.limitBuildSpaceA.y || y > state.game.limitBuildSpaceB.y)) return;
     if (state.game.board[y][x] === currentPlayer) {
         state.game.board[y][x] = constants.EMPTY;
 		if (state.game.tileLimit != null) {
@@ -142,6 +143,8 @@ on('click', '.js-menu-scenario', function(state) {
         description: scenarios[i].description,
         winCondition: scenarios[i].winCondition,
 		tileLimit: scenarios[i].tileLimit,
+		limitBuildSpaceA: scenarios[i].limitBuildSpaceA,
+		limitBuildSpaceB: scenarios[i].limitBuildSpaceB,
         currentPlayer: 1,
         playing: false,
         steps: 0,
