@@ -63,7 +63,14 @@ on('mousedown', '.board-cell', function(state, event) {
     const currentPlayer = state.game.currentPlayer === constants.EMPTY ? constants.GAIA : state.game.currentPlayer;
     if (state.game.board[y][x] === currentPlayer) {
         state.game.board[y][x] = constants.EMPTY;
+		if (state.game.tileLimit != null) {
+			state.game.tileLimit ++;
+		}
     } else if (state.game.board[y][x] === constants.EMPTY) {
+		if (state.game.tileLimit != null) {
+			if (state.game.tileLimit<1) return;
+			state.game.tileLimit --;
+		}
         state.game.board[y][x] = currentPlayer;
     }
 });
@@ -134,6 +141,7 @@ on('click', '.js-menu-scenario', function(state) {
         board: clone(scenarios[i].board),
         description: scenarios[i].description,
         winCondition: scenarios[i].winCondition,
+		tileLimit: scenarios[i].tileLimit,
         currentPlayer: 1,
         playing: false,
         steps: 0,
