@@ -2,16 +2,23 @@ import scenarios from './scenarios.js';
 
 const h = petitDom.h;
 
+const getSpaceClass = function(state, y, x) {
+    if (
+        (state.game.limitBuildSpace) &&
+        (x < state.game.limitBuildSpace.x1 || x > state.game.limitBuildSpace.x2 || y < state.game.limitBuildSpace.y1 || y > state.game.limitBuildSpace.y2)
+    ) return 'limit-outside';
+};
+
 const renderBoard = function(state) {
     return h(
         'div',
         {'class': 'board'},
-        state.game.board.map(row => h(
+        state.game.board.map((row, y) => h(
             'div',
             {'class': 'board-row'},
-            row.map(player => h(
+            row.map((player, x) => h(
                 'div',
-                {'class': `board-cell bg-${player}`}
+                {'class': `board-cell bg-${player} ${getSpaceClass(state, y, x)}`}
             ))
         ))
     );

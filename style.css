@@ -122,3 +122,7 @@ input[type=range]:focus::-webkit-slider-thumb {
 .bg-2 {--cell-color: var(--player2); z-index: 1}
 .bg-3 {--cell-color: var(--player3); z-index: 1}
 .bg-4 {--cell-color: var(--player4); z-index: 1}
+
+.bg-0.limit-outside {
+    opacity: 0.7;
+}
