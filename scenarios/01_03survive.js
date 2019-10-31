@@ -7,8 +7,7 @@ export default {
     "description": "Try and survive for 100 turns. You only have 5 Tiles. You may only build in the top left corner.",
     "board": scenBoard,
     "tileLimit": 5,
-    "limitBuildSpaceA": {x: 0, y: 0},
-    "limitBuildSpaceB": {x: 10, y: 10},
+    "limitBuildSpace": {x1: 0, y1: 0, x2: 10, y2: 10},
     "winCondition": function(state) {
         if (logic.compareBoards(scenBoard, state.game.board)) {
             return false;
