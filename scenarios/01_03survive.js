@@ -6,9 +6,9 @@ export default {
     "title": "Survival 3",
     "description": "Try and survive for 100 turns. You only have 5 Tiles. You may only build in the top left corner.",
     "board": scenBoard,
-	"tileLimit": 5,
-	"limitBuildSpaceA":{x:0,y:0},
-	"limitBuildSpaceB":{x:10,y:10},
+    "tileLimit": 5,
+    "limitBuildSpaceA": {x: 0, y: 0},
+    "limitBuildSpaceB": {x: 10, y: 10},
     "winCondition": function(state) {
         if (logic.compareBoards(scenBoard, state.game.board)) {
             return false;

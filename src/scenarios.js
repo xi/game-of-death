@@ -6,6 +6,6 @@ import survive3 from '../scenarios/01_03survive.js';
 export default [
     gun,
     survive,
-	survive2,
-	survive3,
+    survive2,
+    survive3,
 ];

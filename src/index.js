@@ -61,17 +61,20 @@ on('mousedown', '.board-cell', function(state, event) {
     const x = Array.prototype.indexOf.call(row.children, this);
     const y = Array.prototype.indexOf.call(board.children, row);
     const currentPlayer = state.game.currentPlayer === constants.EMPTY ? constants.GAIA : state.game.currentPlayer;
-	if ((state.game.limitBuildSpaceA != null && state.game.limitBuildSpaceB != null) && (x < state.game.limitBuildSpaceA.x || x > state.game.limitBuildSpaceB.x || y < state.game.limitBuildSpaceA.y || y > state.game.limitBuildSpaceB.y)) return;
+    if (
+        (state.game.limitBuildSpaceA && state.game.limitBuildSpaceB) &&
+        (x < state.game.limitBuildSpaceA.x || x > state.game.limitBuildSpaceB.x || y < state.game.limitBuildSpaceA.y || y > state.game.limitBuildSpaceB.y)
+    ) return;
     if (state.game.board[y][x] === currentPlayer) {
         state.game.board[y][x] = constants.EMPTY;
-		if (state.game.tileLimit != null) {
-			state.game.tileLimit ++;
-		}
+        if (state.game.tileLimit != null) {
+            state.game.tileLimit ++;
+        }
     } else if (state.game.board[y][x] === constants.EMPTY) {
-		if (state.game.tileLimit != null) {
-			if (state.game.tileLimit<1) return;
-			state.game.tileLimit --;
-		}
+        if (state.game.tileLimit) {
+            if (state.game.tileLimit < 1) return;
+            state.game.tileLimit -= 1;
+        }
         state.game.board[y][x] = currentPlayer;
     }
 });
