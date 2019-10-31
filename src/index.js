@@ -67,14 +67,10 @@ on('mousedown', '.board-cell', function(state, event) {
     ) return;
     if (state.game.board[y][x] === currentPlayer) {
         state.game.board[y][x] = constants.EMPTY;
-        if (state.game.tileLimit !== undefined) {
-            state.game.tileLimit += 1;
-        }
+        state.game.tileLimit += 1;
     } else if (state.game.board[y][x] === constants.EMPTY) {
-        if (state.game.tileLimit !== undefined) {
-            if (state.game.tileLimit < 1) return;
-            state.game.tileLimit -= 1;
-        }
+        if (state.game.tileLimit < 1) return;
+        state.game.tileLimit -= 1;
         state.game.board[y][x] = currentPlayer;
     }
 });
@@ -145,7 +141,7 @@ on('click', '.js-menu-scenario', function(state) {
         board: clone(scenarios[i].board),
         description: scenarios[i].description,
         winCondition: scenarios[i].winCondition,
-        tileLimit: scenarios[i].tileLimit,
+        tileLimit: scenarios[i].tileLimit || Infinity,
         limitBuildSpaceA: scenarios[i].limitBuildSpaceA,
         limitBuildSpaceB: scenarios[i].limitBuildSpaceB,
         currentPlayer: 1,
