@@ -47,7 +47,7 @@ const renderControls = function(state) {
         ]);
     } else {
         return h('div', {'class': 'board-controls'}, [
-            state.game.tileLimit,
+            state.game.tileLimit === Infinity ? '∞' : state.game.tileLimit,
             ' ',
             state.game.turnCounter,
             ' ',
