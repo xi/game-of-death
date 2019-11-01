@@ -1,16 +1,13 @@
 # TODO
 ## I. UI
 + [Multiplayer]
-+ Display: Where may a player build?
 + keyboard controls
 + better win/loose indication
 + structure board controls
 
 ## II. Logic
-+ Szenario objects (loadable)
-    + img link (preview)
++ img link (preview)
 + [Multiplayer]
-+ Logic: Where may a player build?
 
 
 ## III. Gamedesign
@@ -24,10 +21,6 @@
     + tutorial level
     + you must destroy an enemy structure. It consists of several 4-blocks and an additional structure. the tick is to trigger the structure to "explode" and destroy the blocks with it
         + background: these blocks are hard to destroy for enemoies, but easy by yourself
-
-+ aditional rules
-    + where may a player build?
-    + how many rounds until the game ends
 
 + Multiplayer
     + Controll points
