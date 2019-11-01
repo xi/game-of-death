@@ -47,6 +47,8 @@ const renderControls = function(state) {
         ]);
     } else {
         return h('div', {'class': 'board-controls'}, [
+            state.game.tileLimit,
+            ' ',
             state.game.turnCounter,
             ' ',
             h('input', {type: 'range', value: 50, name: 'speed'}),
