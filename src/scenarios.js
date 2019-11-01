@@ -12,8 +12,8 @@ export default [
     survive1,
     survive2,
     survive3,
-	growth1,
-	growth2,
-	reach1,
-	reach2,
+    growth1,
+    growth2,
+    reach1,
+    reach2,
 ];
