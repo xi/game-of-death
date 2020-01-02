@@ -40,10 +40,14 @@ button {
 }
 
 input:focus,
-button:hover,
-button:focus {
+button:not(:disabled):hover,
+button:not(:disabled):focus {
     background-color: var(--fg);
     color: var(--bg);
+}
+
+:disabled {
+    opacity: 0.7;
 }
 
 input[type="range"]::-moz-range-thumb {
