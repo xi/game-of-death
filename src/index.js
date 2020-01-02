@@ -73,6 +73,10 @@ on('mousedown', '.board-cell', function(state, event) {
         state.game.tileLimit -= 1;
         state.game.board[y][x] = currentPlayer;
     }
+
+    state.game.resetGame.board = clone(state.game.board);
+    state.game.resetGame.turnCounter = state.game.turnCounter;
+    state.game.resetGame.tileLimit = state.game.tileLimit;
 });
 
 on('click', '.js-next-gen', function(state) {
@@ -85,11 +89,6 @@ on('click', '.js-next-gen', function(state) {
 });
 
 on('click', '.js-play', function(state) {
-    if (!state.game.playing) {
-        state.game.gameOnPlay.board = clone(state.game.board);
-        state.game.gameOnPlay.turnCounter = state.game.turnCounter;
-        state.game.gameOnPlay.tileLimit = state.game.tileLimit;
-    }
     state.game.playing = !state.game.playing;
     play();
 });
@@ -98,9 +97,9 @@ on('click', '.js-reset', function(state) {
     if (state.game.playing) {
         return;
     }
-    state.game.board = clone(state.game.gameOnPlay.board);
-    state.game.turnCounter = state.game.gameOnPlay.turnCounter;
-    state.game.tileLimit = state.game.gameOnPlay.tileLimit;
+    state.game.board = clone(state.game.resetGame.board);
+    state.game.turnCounter = state.game.resetGame.turnCounter;
+    state.game.tileLimit = state.game.resetGame.tileLimit;
 });
 
 on('click', '.js-current-player', function(state) {
@@ -130,7 +129,7 @@ on('click', '.js-menu-sandbox', function(state) {
         steps: 0,
         turnCounter: 0,
         sandbox: true,
-        gameOnPlay: {
+        resetGame: {
             board: logic.setupBoard(),
             tileLimit: Infinity,
             turnCounter: 0,
@@ -150,7 +149,7 @@ on('click', '.js-menu-scenario', function(state) {
         playing: false,
         steps: 0,
         turnCounter: 0,
-        gameOnPlay: {
+        resetGame: {
             board: clone(scenarios[i].board),
             tileLimit: scenarios[i].tileLimit || Infinity,
             turnCounter: 0,
