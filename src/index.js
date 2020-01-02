@@ -12,7 +12,7 @@ const init = function(wrapper) {
     wrapper.append(element);
 };
 
-const update = function() {
+const render = function() {
     const newTree = template(state);
     petitDom.patch(newTree, tree);
     tree = newTree;
@@ -23,7 +23,7 @@ const on = function(eventType, selector, fn) {
         const target = event.target.closest(selector);
         if (target) {
             fn.call(target, state, event);
-            update();
+            render();
         }
     });
 };
@@ -43,7 +43,7 @@ const play = function() {
         }
     }
     logic.calculateNextGen(state);
-    update();
+    render();
     const speed = document.querySelector('[name="speed"]').value;
     const timeout = 2000 * Math.pow(0.95, speed);
     setTimeout(play, timeout);
