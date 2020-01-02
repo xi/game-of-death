@@ -59,7 +59,7 @@ const renderControls = function(state) {
             ' ',
             h('input', {type: 'hidden', value: 1, name: 'steps'}),
             ' ',
-            h('button', {'class': 'js-play'}, state.game.playing ? 'Pause' : 'Play'),
+            h('button', {'class': 'js-play', disabled: state.game.playing}, 'Play'),
             ' ',
             h('button', {'class': 'js-reset'}, 'Reset'),
             ' ',
