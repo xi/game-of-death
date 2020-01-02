@@ -11,9 +11,7 @@ export const setupBoard = function() {
     return board;
 };
 
-export const calculateNextGen = function(state) {
-    state.game.turnCounter++;
-    const board = state.game.board;
+export const calculateNextGen = function(board) {
     const calcBoard = [];
 
     // Calculate every player seperatly
@@ -54,6 +52,11 @@ export const calculateNextGen = function(state) {
             }
         }
     }
+};
+
+export const step = function(state) {
+    state.game.turnCounter++;
+    calculateNextGen(state.game.board);
 
     // Scenariostuff
     if (state.game.winCondition) {
@@ -63,7 +66,7 @@ export const calculateNextGen = function(state) {
             state.game.playing = false;
         }
     }
-};
+}
 
 const getFriendlyNeighbors = function(board, x, y, p){
     let count = 0;

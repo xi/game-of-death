@@ -39,7 +39,7 @@ const play = function() {
             state.game.playing = false;
         }
     }
-    logic.calculateNextGen(state);
+    logic.step(state);
     render();
     const speed = document.querySelector('[name="speed"]').value;
     const timeout = 2000 * Math.pow(0.95, speed);
