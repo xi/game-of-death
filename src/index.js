@@ -2,6 +2,7 @@ import template from './template.js';
 import scenarios from './scenarios.js';
 import * as logic from './logic.js';
 import * as constants from './constants.js';
+import {clone} from './utils.js';
 
 let state, tree;
 
@@ -26,10 +27,6 @@ const on = function(eventType, selector, fn) {
             render();
         }
     });
-};
-
-const clone = function(obj) {
-    return JSON.parse(JSON.stringify(obj));
 };
 
 const play = function() {
