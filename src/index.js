@@ -66,6 +66,11 @@ const createGame = function(scenario) {
             tileLimit: scenario.tileLimit || Infinity,
             turnCounter: 0,
         },
+        restartGame: {
+            board: clone(scenario.board),
+            tileLimit: scenario.tileLimit || Infinity,
+            turnCounter: 0,
+        },
     };
 };
 
@@ -115,6 +120,13 @@ on('click', '.js-reset', function(state) {
     state.game.board = clone(state.game.resetGame.board);
     state.game.turnCounter = state.game.resetGame.turnCounter;
     state.game.tileLimit = state.game.resetGame.tileLimit;
+});
+
+on('click', '.js-restart', function(state) {
+    state.game.playing = false;
+    state.game.board = clone(state.game.restartGame.board);
+    state.game.turnCounter = state.game.restartGame.turnCounter;
+    state.game.tileLimit = state.game.restartGame.tileLimit;
 });
 
 on('click', '.js-current-player', function(state) {

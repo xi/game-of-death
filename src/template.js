@@ -39,6 +39,8 @@ const renderControls = function(state) {
             ' ',
             h('button', {'class': 'js-reset'}, 'Reset'),
             ' ',
+            h('button', {'class': 'js-restart'}, 'Restart'),
+            ' ',
             h('button', {'class': `js-current-player fg-${state.game.currentPlayer}`}, 'Current Player'),
             ' ',
             h('button', {'class': 'js-export'}, 'Export'),
@@ -60,6 +62,8 @@ const renderControls = function(state) {
             h('button', {'class': 'js-play'}, state.game.playing ? 'Pause' : 'Play'),
             ' ',
             h('button', {'class': 'js-reset'}, 'Reset'),
+            ' ',
+            h('button', {'class': 'js-restart'}, 'Restart'),
             ' ',
             h('button', {'class': 'js-quit'}, 'Back'),
         ]);
