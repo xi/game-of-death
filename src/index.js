@@ -61,6 +61,7 @@ const createGame = function(scenario) {
         playing: false,
         steps: 0,
         turnCounter: 0,
+        winState: null,
         resetGame: {
             board: clone(scenario.board),
             tileLimit: scenario.tileLimit || Infinity,
@@ -117,6 +118,7 @@ on('click', '.js-play', function(state) {
 
 on('click', '.js-reset', function(state) {
     state.game.playing = false;
+    state.game.winState = null;
     state.game.board = clone(state.game.resetGame.board);
     state.game.turnCounter = state.game.resetGame.turnCounter;
     state.game.tileLimit = state.game.resetGame.tileLimit;
@@ -124,6 +126,7 @@ on('click', '.js-reset', function(state) {
 
 on('click', '.js-restart', function(state) {
     state.game.playing = false;
+    state.game.winState = null;
     state.game.board = clone(state.game.restartGame.board);
     state.game.turnCounter = state.game.restartGame.turnCounter;
     state.game.tileLimit = state.game.restartGame.tileLimit;
