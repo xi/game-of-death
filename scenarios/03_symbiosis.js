@@ -8,6 +8,6 @@ export default {
     "board": scenBoard,
     "winCondition": function(state) {
         if(logic.countPlayer(state.game.board, 3) === 0) return false;
-        if (state.game.turnCounter >= 50) return true;
+        if (state.game.turnCounter >= 50 || logic.hasCycle(state.game.board)) return true;
     },
 };

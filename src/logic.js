@@ -1,4 +1,5 @@
 import * as constants from './constants.js';
+import {clone} from './utils.js';
 
 export const setupBoard = function() {
     const board = [];
@@ -100,4 +101,15 @@ export const countPlayer = function(board, player) {
         }
     }
     return count;
+};
+
+export const hasCycle = function(board) {
+    let futureBoard = clone(board);
+    for (let i = 0; i < constants.maxCycleLength; i++) {
+        calculateNextGen(futureBoard);
+        if (compareBoards(board, futureBoard)) {
+            return i + 1;
+        }
+    }
+    return 0;
 };

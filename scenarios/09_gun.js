@@ -9,7 +9,7 @@ export default {
         if (logic.countPlayer(state.game.board, 3) === 0) {
             return false;
         }
-        if (state.game.turnCounter >= 300) {
+        if (state.game.turnCounter >= 300 || logic.hasCycle(state.game.board)) {
             return true;
         }
     },

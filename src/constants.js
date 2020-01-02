@@ -9,3 +9,5 @@ export const height = 40;
 export const width = 60;
 
 export const playTimeout = 200;
+
+export const maxCycleLength = 3;
