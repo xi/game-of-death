@@ -80,9 +80,6 @@ on('mousedown', '.board-cell', function(state, event) {
 });
 
 on('click', '.js-next-gen', function(state) {
-    if (state.game.playing) {
-        return;
-    }
     state.game.steps = document.querySelector('[name="steps"]').value;
     state.game.playing = true;
     play();
@@ -94,9 +91,7 @@ on('click', '.js-play', function(state) {
 });
 
 on('click', '.js-reset', function(state) {
-    if (state.game.playing) {
-        return;
-    }
+    state.game.playing = false;
     state.game.board = clone(state.game.resetGame.board);
     state.game.turnCounter = state.game.resetGame.turnCounter;
     state.game.tileLimit = state.game.resetGame.tileLimit;
