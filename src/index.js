@@ -49,6 +49,26 @@ const play = function() {
     setTimeout(play, timeout);
 };
 
+const createGame = function(scenario) {
+    return {
+        board: clone(scenario.board),
+        description: scenario.description,
+        winCondition: scenario.winCondition,
+        tileLimit: scenario.tileLimit || Infinity,
+        limitBuildSpace: scenario.limitBuildSpace,
+        sandbox: false,
+        currentPlayer: 1,
+        playing: false,
+        steps: 0,
+        turnCounter: 0,
+        resetGame: {
+            board: clone(scenario.board),
+            tileLimit: scenario.tileLimit || Infinity,
+            turnCounter: 0,
+        },
+    };
+};
+
 on('mousedown', '.board-cell', function(state, event) {
     if (state.game.playing) {
         return;
@@ -117,39 +137,15 @@ on('click', '.js-quit', function(state) {
 });
 
 on('click', '.js-menu-sandbox', function(state) {
-    state.game = {
+    state.game = createGame({
         board: logic.setupBoard(),
-        currentPlayer: 1,
-        playing: false,
-        steps: 0,
-        turnCounter: 0,
-        sandbox: true,
-        resetGame: {
-            board: logic.setupBoard(),
-            tileLimit: Infinity,
-            turnCounter: 0,
-        },
-    }
+    });
+    state.game.sandbox = true;
 });
 
 on('click', '.js-menu-scenario', function(state) {
     const i = parseInt(this.dataset.scenario, 10);
-    state.game = {
-        board: clone(scenarios[i].board),
-        description: scenarios[i].description,
-        winCondition: scenarios[i].winCondition,
-        tileLimit: scenarios[i].tileLimit || Infinity,
-        limitBuildSpace: scenarios[i].limitBuildSpace,
-        currentPlayer: 1,
-        playing: false,
-        steps: 0,
-        turnCounter: 0,
-        resetGame: {
-            board: clone(scenarios[i].board),
-            tileLimit: scenarios[i].tileLimit || Infinity,
-            turnCounter: 0,
-        },
-    }
+    state.game = createGame(scenarios[i]);
 });
 
 init(document.body);
