@@ -1,4 +1,4 @@
-import * as logic from '../src/logic.js';
+import * as logic from '../logic.js';
 
 export default {
     "title": "Gun",
