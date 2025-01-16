@@ -145,19 +145,26 @@ on('click', '.js-export', function(state) {
 });
 
 on('click', '.js-quit', function(state) {
-    state.game = null;
+    history.back();
 });
 
-on('click', '.js-menu-sandbox', function(state) {
-    state.game = createGame({
-        board: logic.setupBoard(),
-    });
-    state.game.sandbox = true;
-});
+const onNavigate = function() {
+    var path = location.hash.substr(2).split('/');
+    if (path[0] === 'sandbox') {
+        state.game = createGame({
+            board: logic.setupBoard(),
+        });
+        state.game.sandbox = true;
+    } else if (path[0] === 'scenario') {
+        const i = parseInt(path[1], 10);
+        state.game = createGame(scenarios[i]);
+    } else {
+        state.game = null;
+    }
+    render();
+};
 
-on('click', '.js-menu-scenario', function(state) {
-    const i = parseInt(this.dataset.scenario, 10);
-    state.game = createGame(scenarios[i]);
-});
+window.addEventListener('hashchange', onNavigate);
 
 init(document.body);
+onNavigate();

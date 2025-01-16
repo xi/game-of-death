@@ -36,7 +36,8 @@ body {
 }
 
 input,
-button {
+button,
+.btn {
     -webkit-appearance: none;
     padding: 0.3em 0.75em;
     line-height: 1.6;
@@ -51,13 +52,19 @@ button {
 
 input:focus,
 button:not(:disabled):hover,
-button:not(:disabled):focus {
+button:not(:disabled):focus,
+.btn:hover,
+.btn:focus {
     background-color: var(--fg);
     color: var(--bg);
 }
 
-button {
+button,
+.btn {
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: inherit;
 }
 
 :disabled {
@@ -99,7 +106,8 @@ input[type=range]:focus::-webkit-slider-thumb {
     margin: 10vh auto;
 }
 
-.menu button {
+.menu button,
+.menu .btn {
     display: block;
     width: 100%;
     margin-bottom: 0.5em;
