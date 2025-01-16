@@ -49,7 +49,7 @@ const renderControls = function(state) {
             ' ',
             h('button', {'class': 'js-export'}, 'Export'),
             ' ',
-            h('button', {'class': 'js-quit'}, 'Back'),
+            h('a', {'class': 'btn', 'href': '#!'}, 'Back'),
         ]);
     } else {
         return h('div', {'class': 'board-controls'}, [
@@ -69,7 +69,7 @@ const renderControls = function(state) {
             ' ',
             h('button', {'class': 'js-restart'}, 'Restart'),
             ' ',
-            h('button', {'class': 'js-quit'}, 'Back'),
+            h('a', {'class': 'btn', 'href': '#!'}, 'Back'),
         ]);
     }
 };

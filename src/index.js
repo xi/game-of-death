@@ -144,10 +144,6 @@ on('click', '.js-export', function(state) {
     download.remove();
 });
 
-on('click', '.js-quit', function() {
-    history.back();
-});
-
 const onNavigate = function() {
     var path = location.hash.substr(2).split('/');
     if (path[0] === 'sandbox') {
