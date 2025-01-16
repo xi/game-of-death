@@ -1,4 +1,5 @@
 :root {
+    color-scheme: dark;
     --bg: #131518;
     --fg: #ccc;
     --border: black;
@@ -7,6 +8,15 @@
     --player2: #377eb8;
     --player3: #4daf4a;
     --player4: #984ea3;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color-scheme: light;
+        --bg: #fff;
+        --fg: #131518;
+        --border: #888;
+    }
 }
 
 :root {
