@@ -3,10 +3,14 @@ import scenarios from './scenarios.js';
 const h = petitDom.h;
 
 const getSpaceClass = function(state, y, x) {
-    if (
-        (state.game.limitBuildSpace) &&
-        (x < state.game.limitBuildSpace.x1 || x > state.game.limitBuildSpace.x2 || y < state.game.limitBuildSpace.y1 || y > state.game.limitBuildSpace.y2)
-    ) return 'limit-outside';
+    if ((state.game.limitBuildSpace) && (
+        x < state.game.limitBuildSpace.x1
+        || x > state.game.limitBuildSpace.x2
+        || y < state.game.limitBuildSpace.y1
+        || y > state.game.limitBuildSpace.y2
+    )) {
+        return 'limit-outside';
+    }
 };
 
 const renderBoard = function(state) {
@@ -70,10 +74,10 @@ const renderControls = function(state) {
     }
 };
 
-const renderMenu = function(state) {
+const renderMenu = function() {
     return h('div', {'class': 'menu'}, [
         h('img', {'class': 'logo', 'src': 'logo.jpg', 'alt': 'Game of Death'}),
-        h('a', {'class': 'btn', 'href': '#!sandbox'}, 'Start sandbox game')
+        h('a', {'class': 'btn', 'href': '#!sandbox'}, 'Start sandbox game'),
     ].concat(scenarios.map((scenario, i) => h(
         'a',
         {'class': 'btn', 'href': `#!scenario/${i}`},
@@ -100,4 +104,4 @@ export default function(state) {
     } else {
         return renderMenu(state);
     }
-};
+}

@@ -76,7 +76,7 @@ on('mousedown', '.board-cell', function(state, event) {
     if (state.game.playing) {
         return;
     }
-    if (event.buttons != 1) {
+    if (event.buttons !== 1) {
         return;
     }
     const row = this.parentElement;
@@ -144,7 +144,7 @@ on('click', '.js-export', function(state) {
     download.remove();
 });
 
-on('click', '.js-quit', function(state) {
+on('click', '.js-quit', function() {
     history.back();
 });
 
