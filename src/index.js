@@ -155,11 +155,14 @@ const onNavigate = function() {
             board: logic.setupBoard(),
         });
         state.game.sandbox = true;
+        state.scenario = null;
     } else if (path[0] === 'scenario') {
         const i = parseInt(path[1], 10);
         state.game = createGame(scenarios[i]);
+        state.scenario = i;
     } else {
         state.game = null;
+        state.scenario = null;
     }
     render();
 };

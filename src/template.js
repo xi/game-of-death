@@ -87,7 +87,15 @@ const renderMenu = function() {
 
 const renderWinState = function(state) {
     if (state.game.winState) {
-        return h('p', {}, 'You have won');
+        const items = ['You have won!'];
+        if (state.scenario !== null && state.scenario + 1 < scenarios.length) {
+            items.push(' ');
+            items.push(h('a', {
+                'class': 'btn',
+                'href': `#!scenario/${state.scenario + 1}`,
+            }, 'Next'));
+        }
+        return h('p', {}, items);
     } else if (state.game.winState === false) {
         return h('p', {}, 'You have lost');
     }
